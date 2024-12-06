@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{{ title if title else 'Sri Lanka Travel Ontology' }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">Sri Lanka Travel</div>
+        <ul class="navbar-menu">
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('accommodations_page') }}">Accommodations</a></li>
+            <li><a href="{{ url_for('destinations_page') }}">Destinations</a></li>
+            <li><a href="{{ url_for('tourists_page') }}">Tourists</a></li>
+            <li><a href="{{ url_for('activities_page') }}">Activities</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

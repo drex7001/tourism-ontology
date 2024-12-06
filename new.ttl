@@ -1,0 +1,472 @@
+@prefix : <http://www.semanticweb.org/srilanka/travel/ontology#> .
+@prefix ont: <http://www.semanticweb.org/srilanka/travel/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@base <http://www.semanticweb.org/srilanka/travel/ontology#> .
+
+<http://www.semanticweb.org/srilanka/travel/ontology> rdf:type owl:Ontology ;
+                                                       rdfs:comment "Comprehensive Ontology for Sri Lanka Tourism" .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#hasAttraction
+ont:hasAttraction rdf:type owl:ObjectProperty ;
+                  rdfs:domain ont:Destination ;
+                  rdfs:range ont:Attraction .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#locatedIn
+ont:locatedIn rdf:type owl:ObjectProperty ;
+              rdfs:domain [ rdf:type owl:Class ;
+                            owl:unionOf ( ont:Accommodation
+                                          ont:Attraction
+                                        )
+                          ] ;
+              rdfs:range ont:Destination .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#offersActivity
+ont:offersActivity rdf:type owl:ObjectProperty ;
+                   rdfs:domain ont:Destination ;
+                   rdfs:range ont:Activity .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#preferredActivity
+ont:preferredActivity rdf:type owl:ObjectProperty ;
+                      rdfs:domain ont:Tourist ;
+                      rdfs:range ont:Activity .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#providesTransportation
+ont:providesTransportation rdf:type owl:ObjectProperty ;
+                           rdfs:domain ont:Accommodation ;
+                           rdfs:range ont:Transportation .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#recommends
+ont:recommends rdf:type owl:ObjectProperty ;
+               rdfs:domain ont:Tourist ;
+               rdfs:range ont:Destination .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#recommendsAccommodation
+ont:recommendsAccommodation rdf:type owl:ObjectProperty ;
+                            rdfs:domain ont:Tourist ;
+                            rdfs:range ont:Accommodation .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#hasCost
+ont:hasCost rdf:type owl:DatatypeProperty ;
+            rdfs:domain [ rdf:type owl:Class ;
+                          owl:unionOf ( ont:Accommodation
+                                        ont:Activity
+                                        ont:Transportation
+                                      )
+                        ] ;
+            rdfs:range xsd:decimal .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#hasDuration
+ont:hasDuration rdf:type owl:DatatypeProperty ;
+                rdfs:domain ont:Activity ;
+                rdfs:range xsd:decimal ;
+                rdfs:comment "Duration in hours" .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#hasName
+ont:hasName rdf:type owl:DatatypeProperty ;
+            rdfs:domain owl:NamedIndividual ;
+            rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#hasRating
+ont:hasRating rdf:type owl:DatatypeProperty ;
+              rdfs:domain ont:Accommodation ;
+              rdfs:range xsd:float .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#Accommodation
+ont:Accommodation rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#Activity
+ont:Activity rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#Attraction
+ont:Attraction rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#AyurvedaTreatment
+ont:AyurvedaTreatment rdf:type owl:Class ;
+                      rdfs:subClassOf ont:Activity .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#Beach
+ont:Beach rdf:type owl:Class ;
+          rdfs:subClassOf ont:Destination .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#Bus
+ont:Bus rdf:type owl:Class ;
+        rdfs:subClassOf ont:Transportation .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#City
+ont:City rdf:type owl:Class ;
+         rdfs:subClassOf ont:Destination .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#CulturalSite
+ont:CulturalSite rdf:type owl:Class ;
+                 rdfs:subClassOf ont:Attraction .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#Destination
+ont:Destination rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#GuestHouse
+ont:GuestHouse rdf:type owl:Class ;
+               rdfs:subClassOf ont:Accommodation .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#Hiking
+ont:Hiking rdf:type owl:Class ;
+           rdfs:subClassOf ont:Activity .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#HillCountry
+ont:HillCountry rdf:type owl:Class ;
+                rdfs:subClassOf ont:Destination .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#Hotel
+ont:Hotel rdf:type owl:Class ;
+          rdfs:subClassOf ont:Accommodation .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#NaturalSite
+ont:NaturalSite rdf:type owl:Class ;
+                rdfs:subClassOf ont:Attraction .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#Surfing
+ont:Surfing rdf:type owl:Class ;
+            rdfs:subClassOf ont:Activity .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#Taxi
+ont:Taxi rdf:type owl:Class ;
+         rdfs:subClassOf ont:Transportation .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#TeaPlantationTour
+ont:TeaPlantationTour rdf:type owl:Class ;
+                      rdfs:subClassOf ont:Activity .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#Tourist
+ont:Tourist rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#Train
+ont:Train rdf:type owl:Class ;
+          rdfs:subClassOf ont:Transportation .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#Transportation
+ont:Transportation rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#TukTuk
+ont:TukTuk rdf:type owl:Class ;
+           rdfs:subClassOf ont:Transportation .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#WildlifePark
+ont:WildlifePark rdf:type owl:Class ;
+                 rdfs:subClassOf ont:NaturalSite .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#WildlifeSafari
+ont:WildlifeSafari rdf:type owl:Class ;
+                   rdfs:subClassOf ont:Activity .
+
+
+###  http://www.w3.org/2002/07/owl#NamedIndividual
+owl:NamedIndividual rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#Amara
+ont:Amara rdf:type owl:NamedIndividual ,
+                   ont:Tourist ;
+          ont:preferredActivity ont:Hiking ;
+          ont:hasName "Amara" .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#AyurvedaTreatment
+ont:AyurvedaTreatment rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#AyurvedaTreatmentActivity
+ont:AyurvedaTreatmentActivity rdf:type owl:NamedIndividual ,
+                                       ont:AyurvedaTreatment ;
+                              ont:hasCost 50.0 ;
+                              ont:hasDuration 1.5 ;
+                              ont:hasName "Ayurveda Treatment Activity" .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#Colombo
+ont:Colombo rdf:type owl:NamedIndividual ,
+                     ont:City ;
+            ont:hasAttraction ont:GalleFaceGreen ;
+            ont:offersActivity ont:AyurvedaTreatmentActivity ;
+            ont:hasName "Colombo" .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#ColomboCityHotel
+ont:ColomboCityHotel rdf:type owl:NamedIndividual ,
+                              ont:Hotel ;
+                     ont:locatedIn ont:Colombo ;
+                     ont:providesTransportation ont:TukTukService ;
+                     ont:hasCost 100.0 ;
+                     ont:hasName "Colombo City Hotel" ;
+                     ont:hasRating "4.2"^^xsd:float .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#CulturalShowActivity
+ont:CulturalShowActivity rdf:type owl:NamedIndividual ,
+                                  ont:Activity ;
+                         ont:hasCost 20.0 ;
+                         ont:hasDuration 2.0 ;
+                         ont:hasName "Cultural Show Activity" .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#Ella
+ont:Ella rdf:type owl:NamedIndividual ,
+                  ont:HillCountry ;
+         ont:hasAttraction ont:NineArchesBridge ;
+         ont:offersActivity ont:HikingActivity ;
+         ont:hasName "Ella" .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#EllaMountainGuestHouse
+ont:EllaMountainGuestHouse rdf:type owl:NamedIndividual ,
+                                    ont:GuestHouse ;
+                           ont:locatedIn ont:Ella ;
+                           ont:hasCost 50.0 ;
+                           ont:hasName "Ella Mountain Guest House" ;
+                           ont:hasRating "4.5"^^xsd:float .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#GalleFaceGreen
+ont:GalleFaceGreen rdf:type owl:NamedIndividual ,
+                            ont:Attraction ;
+                   ont:locatedIn ont:Colombo ;
+                   ont:hasName "Galle Face Green" .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#Hiking
+ont:Hiking rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#HikingActivity
+ont:HikingActivity rdf:type owl:NamedIndividual ,
+                            ont:Hiking ;
+                   ont:hasCost 15.0 ;
+                   ont:hasDuration 4.0 ;
+                   ont:hasName "Hiking Activity" .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#HortonPlains
+ont:HortonPlains rdf:type owl:NamedIndividual ,
+                          ont:NaturalSite ;
+                 ont:locatedIn ont:NuwaraEliya ;
+                 ont:hasName "Horton Plains" .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#Kandy
+ont:Kandy rdf:type owl:NamedIndividual ,
+                   ont:City ;
+          ont:hasAttraction ont:TempleOfTheToothRelic ;
+          ont:offersActivity ont:CulturalShowActivity ;
+          ont:hasName "Kandy" .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#Mirissa
+ont:Mirissa rdf:type owl:NamedIndividual ,
+                     ont:Beach ;
+            ont:hasAttraction ont:WhaleWatching ;
+            ont:offersActivity ont:SurfingActivity ;
+            ont:hasName "Mirissa" .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#Nimal
+ont:Nimal rdf:type owl:NamedIndividual ,
+                   ont:Tourist ;
+          ont:preferredActivity ont:AyurvedaTreatment ;
+          ont:hasName "Nimal" .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#NineArchesBridge
+ont:NineArchesBridge rdf:type owl:NamedIndividual ,
+                              ont:Attraction ;
+                     ont:locatedIn ont:Ella ;
+                     ont:hasName "Nine Arches Bridge" .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#NuwaraEliya
+ont:NuwaraEliya rdf:type owl:NamedIndividual ,
+                         ont:HillCountry ;
+                ont:hasAttraction ont:HortonPlains ;
+                ont:offersActivity ont:TeaPlantationTourActivity ;
+                ont:hasName "Nuwara Eliya" .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#NuwaraEliyaTeaBungalow
+ont:NuwaraEliyaTeaBungalow rdf:type owl:NamedIndividual ,
+                                    ont:Hotel ;
+                           ont:locatedIn ont:NuwaraEliya ;
+                           ont:hasCost 120.0 ;
+                           ont:hasName "Nuwara Eliya Tea Bungalow" ;
+                           ont:hasRating "4.8"^^xsd:float .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#SurfingActivity
+ont:SurfingActivity rdf:type owl:NamedIndividual ,
+                             ont:Surfing ;
+                    ont:hasCost 25.0 ;
+                    ont:hasDuration 2.0 ;
+                    ont:hasName "Surfing Activity" .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#TeaPlantationTourActivity
+ont:TeaPlantationTourActivity rdf:type owl:NamedIndividual ,
+                                       ont:TeaPlantationTour ;
+                              ont:hasCost 10.0 ;
+                              ont:hasDuration 3.0 ;
+                              ont:hasName "Tea Plantation Tour Activity" .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#TempleOfTheToothRelic
+ont:TempleOfTheToothRelic rdf:type owl:NamedIndividual ,
+                                   ont:CulturalSite ;
+                          ont:locatedIn ont:Kandy ;
+                          ont:hasName "Temple of the Tooth Relic" .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#TukTukService
+ont:TukTukService rdf:type owl:NamedIndividual ,
+                           ont:TukTuk ;
+                  ont:hasCost 5.0 ;
+                  ont:hasName "Tuk Tuk Service" .
+
+
+###  http://www.semanticweb.org/srilanka/travel/ontology#WhaleWatching
+ont:WhaleWatching rdf:type owl:NamedIndividual ,
+                           ont:Attraction ;
+                  ont:locatedIn ont:Mirissa ;
+                  ont:hasName "Whale Watching" .
+
+
+###  urn:swrl#a
+<urn:swrl#a> rdf:type owl:NamedIndividual .
+
+
+###  urn:swrl#ac
+<urn:swrl#ac> rdf:type owl:NamedIndividual .
+
+
+###  urn:swrl#d
+<urn:swrl#d> rdf:type owl:NamedIndividual .
+
+
+###  urn:swrl#t
+<urn:swrl#t> rdf:type owl:NamedIndividual .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+[ rdfs:label "Recommend Accommodation Rule" ;
+  rdf:type swrl:Imp ;
+  swrl:body [ rdf:type swrl:AtomList ;
+              rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                          swrl:propertyPredicate ont:recommends ;
+                          swrl:argument1 <urn:swrl#t> ;
+                          swrl:argument2 <urn:swrl#d>
+                        ] ;
+              rdf:rest [ rdf:type swrl:AtomList ;
+                         rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                     swrl:propertyPredicate ont:locatedIn ;
+                                     swrl:argument1 <urn:swrl#ac> ;
+                                     swrl:argument2 <urn:swrl#d>
+                                   ] ;
+                         rdf:rest rdf:nil
+                       ]
+            ] ;
+  swrl:head [ rdf:type swrl:AtomList ;
+              rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                          swrl:propertyPredicate ont:recommendsAccommodation ;
+                          swrl:argument1 <urn:swrl#t> ;
+                          swrl:argument2 <urn:swrl#ac>
+                        ] ;
+              rdf:rest rdf:nil
+            ]
+] .
+
+[ rdfs:label "Recommend Destination Rule" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate ont:Tourist ;
+                           swrl:argument1 <urn:swrl#t>
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                      swrl:propertyPredicate ont:preferredActivity ;
+                                      swrl:argument1 <urn:swrl#t> ;
+                                      swrl:argument2 <urn:swrl#a>
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                 swrl:propertyPredicate ont:offersActivity ;
+                                                 swrl:argument1 <urn:swrl#d> ;
+                                                 swrl:argument2 <urn:swrl#a>
+                                               ] ;
+                                     rdf:rest rdf:nil
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate ont:recommends ;
+                           swrl:argument1 <urn:swrl#t> ;
+                           swrl:argument2 <urn:swrl#d>
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

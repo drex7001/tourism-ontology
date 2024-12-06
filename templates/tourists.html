@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Tourists</h1>
+<div id="touristsContainer" class="card-grid"></div>
+
+<script>
+    fetch('/tourists.json')
+        .then(resp => resp.json())
+        .then(data => {
+            const container = document.getElementById('touristsContainer');
+            container.innerHTML = '';
+            data.forEach(tourist => {
+                const card = document.createElement('div');
+                card.classList.add('card');
+
+                if(tourist.image) {
+                    const img = document.createElement('img');
+                    img.src = tourist.image;
+                    img.alt = tourist.name;
+                    img.classList.add('card-image');
+                    card.appendChild(img);
+                }
+
+                const name = document.createElement('h2');
+                name.textContent = tourist.name || 'Unknown Tourist';
+                card.appendChild(name);
+
+                if(tourist.preferred_activities && tourist.preferred_activities.length > 0) {
+                    const actTitle = document.createElement('h3');
+                    actTitle.textContent = 'Preferred Activities:';
+                    card.appendChild(actTitle);
+
+                    const ul = document.createElement('ul');
+                    tourist.preferred_activities.forEach(act => {
+                        const li = document.createElement('li');
+                        if(act.image) {
+                            const actImg = document.createElement('img');
+                            actImg.src = act.image;
+                            actImg.alt = act.name;
+                            actImg.classList.add('small-image');
+                            li.appendChild(actImg);
+                        }
+                        li.appendChild(document.createTextNode(act.name));
+                        ul.appendChild(li);
+                    });
+                    card.appendChild(ul);
+                }
+
+                container.appendChild(card);
+            });
+        });
+</script>
+{% endblock %}
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Tourists</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Tourists</h1>
+    <div id="touristsContainer"></div>
+
+    <script>
+        fetch('/tourists.json')
+            .then(resp => resp.json())
+            .then(data => {
+                const container = document.getElementById('touristsContainer');
+                data.forEach(tourist => {
+                    const card = document.createElement('div');
+                    card.classList.add('card');
+
+                    const name = document.createElement('h2');
+                    name.textContent = tourist.name;
+
+                    if(tourist.image) {
+                        const img = document.createElement('img');
+                        img.src = tourist.image;
+                        img.alt = tourist.name;
+                        img.style.width = "150px";
+                        card.appendChild(img);
+                    }
+
+                    card.appendChild(name);
+
+                    if(tourist.preferred_activities && tourist.preferred_activities.length > 0) {
+                        const actTitle = document.createElement('h3');
+                        actTitle.textContent = 'Preferred Activities:';
+                        card.appendChild(actTitle);
+
+                        const ul = document.createElement('ul');
+                        tourist.preferred_activities.forEach(act => {
+                            const li = document.createElement('li');
+                            if(act.image) {
+                                const actImg = document.createElement('img');
+                                actImg.src = act.image;
+                                actImg.alt = act.name;
+                                actImg.style.width = "100px";
+                                li.appendChild(actImg);
+                            }
+                            li.appendChild(document.createTextNode(act.name));
+                            ul.appendChild(li);
+                        });
+                        card.appendChild(ul);
+                    }
+
+                    container.appendChild(card);
+                });
+            });
+    </script>
+</body>
+</html> -->

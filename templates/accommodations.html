@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Accommodations</h1>
+<div class="filter">
+    <label for="ratingSlider">Filter by rating (min): </label>
+    <input type="range" id="ratingSlider" min="0" max="5" step="0.1" value="0" oninput="filterByRating(this.value)">
+    <span id="sliderValue">0</span>
+</div>
+<div id="accommodationsContainer" class="card-grid"></div>
+
+<script>
+    let accommodationsData = [];
+
+    function renderAccommodations(data) {
+        const container = document.getElementById('accommodationsContainer');
+        container.innerHTML = '';
+        data.forEach(accom => {
+            const card = document.createElement('div');
+            card.classList.add('card');
+
+            if(accom.image) {
+                const img = document.createElement('img');
+                img.src = accom.image;
+                img.alt = accom.name;
+                img.classList.add('card-image');
+                card.appendChild(img);
+            }
+
+            const title = document.createElement('h2');
+            title.textContent = accom.name || 'Unknown Accommodation';
+            card.appendChild(title);
+
+            const rating = document.createElement('p');
+            rating.textContent = `Rating: ${accom.rating || 'N/A'}`;
+            card.appendChild(rating);
+
+            const cost = document.createElement('p');
+            cost.textContent = `Cost: ${accom.cost ? accom.cost + ' USD' : 'N/A'}`;
+            card.appendChild(cost);
+
+            container.appendChild(card);
+        });
+    }
+
+    function filterByRating(value) {
+        document.getElementById('sliderValue').textContent = value;
+        const filtered = accommodationsData.filter(a => !a.rating || a.rating >= value);
+        renderAccommodations(filtered);
+    }
+
+    fetch('/accommodations.json')
+        .then(response => response.json())
+        .then(data => {
+            accommodationsData = data;
+            renderAccommodations(data);
+        });
+</script>
+{% endblock %}
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Accommodations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Accommodations</h1>
+    <label for="ratingSlider">Filter by rating (min): </label>
+    <input type="range" id="ratingSlider" min="0" max="5" step="0.1" value="0" oninput="filterByRating(this.value)">
+    <span id="sliderValue">0</span>
+
+    <div id="accommodationsContainer"></div>
+
+    <script>
+        let accommodationsData = [];
+
+        function renderAccommodations(data) {
+            const container = document.getElementById('accommodationsContainer');
+            container.innerHTML = '';
+            data.forEach(accom => {
+                const card = document.createElement('div');
+                card.classList.add('card');
+
+                const title = document.createElement('h2');
+                title.textContent = accom.name;
+
+                const rating = document.createElement('p');
+                rating.textContent = `Rating: ${accom.rating || 'N/A'}`;
+
+                const cost = document.createElement('p');
+                cost.textContent = `Cost: ${accom.cost || 'N/A'}`;
+
+                if(accom.image) {
+                    const img = document.createElement('img');
+                    img.src = accom.image;
+                    img.alt = accom.name;
+                    img.classList.add('accommodation-image');
+                    card.appendChild(img);
+                }
+
+                card.appendChild(title);
+                card.appendChild(rating);
+                card.appendChild(cost);
+                container.appendChild(card);
+            });
+        }
+
+        function filterByRating(value) {
+            document.getElementById('sliderValue').textContent = value;
+            const filtered = accommodationsData.filter(a => !a.rating || a.rating >= value);
+            renderAccommodations(filtered);
+        }
+
+        // Fetch data
+        fetch('/accommodations.json')
+            .then(response => response.json())
+            .then(data => {
+                accommodationsData = data;
+                renderAccommodations(data);
+            });
+    </script>
+</body>
+</html> -->

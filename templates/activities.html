@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Activities</h1>
+<div id="activitiesContainer" class="card-grid"></div>
+
+<script>
+    fetch('/activities.json')
+        .then(resp => resp.json())
+        .then(data => {
+            const container = document.getElementById('activitiesContainer');
+            container.innerHTML = '';
+            data.forEach(act => {
+                const card = document.createElement('div');
+                card.classList.add('card');
+
+                if(act.image) {
+                    const img = document.createElement('img');
+                    img.src = act.image;
+                    img.alt = act.name;
+                    img.classList.add('card-image');
+                    card.appendChild(img);
+                }
+
+                const title = document.createElement('h2');
+                title.textContent = act.name || 'Unknown Activity';
+                card.appendChild(title);
+
+                const duration = document.createElement('p');
+                duration.textContent = `Duration: ${act.duration ? act.duration + ' hours' : 'N/A'}`;
+                card.appendChild(duration);
+
+                const cost = document.createElement('p');
+                cost.textContent = `Cost: ${act.cost ? act.cost + ' USD' : 'N/A'}`;
+                card.appendChild(cost);
+
+                container.appendChild(card);
+            });
+        });
+</script>
+{% endblock %}
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Activities</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Activities</h1>
+    <div id="activitiesContainer"></div>
+
+    <script>
+        fetch('/activities.json')
+            .then(resp => resp.json())
+            .then(data => {
+                const container = document.getElementById('activitiesContainer');
+                data.forEach(act => {
+                    const card = document.createElement('div');
+                    card.classList.add('card');
+
+                    const title = document.createElement('h2');
+                    title.textContent = act.name;
+
+                    if(act.image) {
+                        const img = document.createElement('img');
+                        img.src = act.image;
+                        img.alt = act.name;
+                        img.style.width = "150px";
+                        card.appendChild(img);
+                    }
+
+                    const duration = document.createElement('p');
+                    duration.textContent = `Duration: ${act.duration || 'N/A'} hours`;
+
+                    const cost = document.createElement('p');
+                    cost.textContent = `Cost: ${act.cost || 'N/A'} USD`;
+
+                    card.appendChild(title);
+                    card.appendChild(duration);
+                    card.appendChild(cost);
+
+                    container.appendChild(card);
+                });
+            });
+    </script>
+</body>
+</html> -->

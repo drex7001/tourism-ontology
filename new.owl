@@ -1,0 +1,766 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/srilanka/travel/ontology#"
+     xml:base="http://www.semanticweb.org/srilanka/travel/ontology"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:schema="http://schema.org/">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/srilanka/travel/ontology"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://schema.org/image -->
+
+    <owl:AnnotationProperty rdf:about="http://schema.org/image"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#hasAttraction -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#hasAttraction">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Destination"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Attraction"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#locatedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#locatedIn">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Accommodation"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Attraction"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Destination"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#offersActivity -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#offersActivity">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Destination"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Activity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#preferredActivity -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#preferredActivity">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Tourist"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Activity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#providesTransportation -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#providesTransportation">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Accommodation"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Transportation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#recommends -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#recommends">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Tourist"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Destination"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#recommendsAccommodation -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#recommendsAccommodation">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Tourist"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Accommodation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#hasCost -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#hasCost">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Accommodation"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Activity"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Transportation"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#hasDuration -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#hasDuration">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Activity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#hasName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#hasName">
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#hasRating -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#hasRating">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Accommodation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Accommodation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Accommodation"/>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Activity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Activity"/>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Attraction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Attraction"/>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#AyurvedaTreatment -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#AyurvedaTreatment">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Activity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Beach -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Beach">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Destination"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Bus -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Bus">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Transportation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#City -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#City">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Destination"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#CulturalSite -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#CulturalSite">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Attraction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Destination -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Destination"/>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#GuestHouse -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#GuestHouse">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Accommodation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Hiking -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Hiking">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Activity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#HillCountry -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#HillCountry">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Destination"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Hotel -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Hotel">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Accommodation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#NaturalSite -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#NaturalSite">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Attraction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Surfing -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Surfing">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Activity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#TeaPlantationTour -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#TeaPlantationTour">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Activity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Tourist -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Tourist"/>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Train -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Train">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Transportation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Transportation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Transportation"/>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#TukTuk -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#TukTuk">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Transportation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#WildlifeSafari -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#WildlifeSafari">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Activity"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/?a -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/?a"/>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/?accom -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/?accom"/>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/?d -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/?d"/>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/?t -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/?t"/>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Ahangama_Surfing -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Ahangama_Surfing">
+        <rdf:type rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Surfing"/>
+        <hasCost rdf:datatype="http://www.w3.org/2001/XMLSchema#float">30.0</hasCost>
+        <hasDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2.0</hasDuration>
+        <hasName>Ahangama Surfing</hasName>
+        <schema:image rdf:resource="https://overatours.com/wp-content/uploads/2021/10/Best-Surfing-Locations-in-Ahagama-Sri-Lanka.jpg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Amara -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Amara">
+        <rdf:type rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Tourist"/>
+        <owl:differentFrom rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Nimal"/>
+        <preferredActivity rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Chariot_Path"/>
+        <hasName>Amara</hasName>
+        <schema:image rdf:resource="https://i0.wp.com/www.bonjoursunset.com/wp-content/uploads/2019/07/IMG_1106-1.jpg?fit=1000%2C667&amp;ssl=1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Ampara -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Ampara">
+        <rdf:type rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Beach"/>
+        <hasName>Ampara</hasName>
+        <schema:image rdf:resource="https://i.ytimg.com/vi/NBUjn0LHTUE/maxresdefault.jpg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#CTB -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#CTB">
+        <rdf:type rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Bus"/>
+        <hasName>CTB Bus</hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Chariot_Path -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Chariot_Path">
+        <rdf:type rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Hiking"/>
+        <locatedIn rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#NuwaraEliya"/>
+        <hasCost rdf:datatype="http://www.w3.org/2001/XMLSchema#float">15.0</hasCost>
+        <hasDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.0</hasDuration>
+        <hasName>Chariot Path</hasName>
+        <schema:image rdf:resource="https://www.attractionsinsrilanka.com/wp-content/uploads/2020/07/Chariot-Path.jpg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Colombo -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Colombo">
+        <rdf:type rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#City"/>
+        <hasAttraction rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#GalleFaceGreen"/>
+        <offersActivity rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#SPA_Ceylon_Ayrvedic_Treatment"/>
+        <hasName>Colombo</hasName>
+        <schema:image rdf:resource="https://media.gettyimages.com/id/1357991225/video/beautiful-sunrise-view-of-colombo-city-sri-lanka.jpg?s=640x640&amp;k=20&amp;c=fs091rGwEY5HWcBJRwf8um481PPlSNmBM-dBPqCf9Sg="/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Damro_Tea_Tour -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Damro_Tea_Tour">
+        <rdf:type rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#TeaPlantationTour"/>
+        <hasCost rdf:datatype="http://www.w3.org/2001/XMLSchema#float">6000.0</hasCost>
+        <hasDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#float">3.0</hasDuration>
+        <hasName>Damro Tea Plantation tour</hasName>
+        <schema:image rdf:resource="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/25/3b/b6/photo0jpg.jpg?w=900&amp;h=500&amp;s=1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Ella -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Ella">
+        <rdf:type rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#HillCountry"/>
+        <hasAttraction rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#NineArchesBridge"/>
+        <offersActivity rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Chariot_Path"/>
+        <hasName>Ella</hasName>
+        <schema:image rdf:resource="https://i0.wp.com/www.bonjoursunset.com/wp-content/uploads/2019/07/IMG_1106-1.jpg?fit=1000%2C667&amp;ssl=1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#EllaMountainGuestHouse -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#EllaMountainGuestHouse">
+        <rdf:type rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#GuestHouse"/>
+        <locatedIn rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Ella"/>
+        <hasCost rdf:datatype="http://www.w3.org/2001/XMLSchema#float">50.0</hasCost>
+        <hasName>Ella Mountain Guest House</hasName>
+        <hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.0</hasRating>
+        <rdfs:seeAlso rdf:resource="https://cf.bstatic.com/xdata/images/hotel/max1024x768/328128248.jpg?k=63050ef29fd01063a84782522d00096ba136baf0d26e360f605474a9cd9850e0&amp;o=&amp;hp=1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#GalleFaceGreen -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#GalleFaceGreen">
+        <rdf:type rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#CulturalSite"/>
+        <locatedIn rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Colombo"/>
+        <hasName>Galle Face Green</hasName>
+        <schema:image rdf:resource="https://media1.thrillophilia.com/filestore/docw1hphy3zg23x9fyr5x9b9j995_1580298371_Galle_face_green.jpg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#HortonPlains -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#HortonPlains">
+        <rdf:type rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#NaturalSite"/>
+        <locatedIn rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#NuwaraEliya"/>
+        <hasName>Horton Plains</hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Kandy -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Kandy">
+        <rdf:type rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#City"/>
+        <hasAttraction rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#TempleOfTheToothRelic"/>
+        <hasName>Kandy</hasName>
+        <schema:image rdf:resource="https://i0.wp.com/www.bonjoursunset.com/wp-content/uploads/2019/07/IMG_1106-1.jpg?fit=1000%2C667&amp;ssl=1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Luxury -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Luxury">
+        <rdf:type rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Bus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Mirissa -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Mirissa">
+        <rdf:type rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Beach"/>
+        <offersActivity rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Mirissa_Surfing"/>
+        <hasName>Mirissa</hasName>
+        <schema:image rdf:resource="https://thirdeyetraveller.com/wp-content/uploads/COCONUTHILL-7-of-12-2-scaled-scaled.jpg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Mirissa_Surfing -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Mirissa_Surfing">
+        <rdf:type rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Surfing"/>
+        <locatedIn rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Mirissa"/>
+        <hasCost rdf:datatype="http://www.w3.org/2001/XMLSchema#float">7500.0</hasCost>
+        <hasName>Mirissa surfing</hasName>
+        <schema:image rdf:resource="https://overatours.com/wp-content/uploads/2021/09/surfing-mirissa.jpg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Nimal -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Nimal">
+        <rdf:type rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Tourist"/>
+        <preferredActivity rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#SPA_Ceylon_Ayrvedic_Treatment"/>
+        <hasName>Nimal</hasName>
+        <schema:image rdf:resource="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIf4R5qPKHPNMyAqV-FjS_OTBB8pfUV29Phg&amp;s"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#NineArchesBridge -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#NineArchesBridge">
+        <rdf:type rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#CulturalSite"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#NaturalSite"/>
+        <locatedIn rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Ella"/>
+        <hasName>Nine Arches Bridge</hasName>
+        <schema:image rdf:resource="https://d1ynolcus8dvgv.cloudfront.net/2019/01/nine-arch-2-5.jpg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#NuwaraEliya -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#NuwaraEliya">
+        <rdf:type rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#HillCountry"/>
+        <hasAttraction rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#HortonPlains"/>
+        <offersActivity rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Damro_Tea_Tour"/>
+        <hasName>Nuwara Eliya</hasName>
+        <schema:image rdf:resource="https://i0.wp.com/www.bonjoursunset.com/wp-content/uploads/2019/07/IMG_1106-1.jpg?fit=1000%2C667&amp;ssl=1"/>
+        <schema:image rdf:resource="https://www.thesrilankatravelblog.com/wp-content/uploads/2024/03/top-6-things-to-do-in-sri-lankas-hill-country-header.jpg"/>
+        <schema:image rdf:resource="https://www.tiffanymccauley.com/wp-content/uploads/2023/11/beach-.jpg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Nuwara_Eliya_Tea_Bungalow -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Nuwara_Eliya_Tea_Bungalow">
+        <rdf:type rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Hotel"/>
+        <locatedIn rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#NuwaraEliya"/>
+        <hasCost rdf:datatype="http://www.w3.org/2001/XMLSchema#float">120.0</hasCost>
+        <hasName>Nuwara Eliya Tea Bungalow</hasName>
+        <hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.8</hasRating>
+        <schema:image rdf:resource="https://cf.bstatic.com/xdata/images/hotel/max1024x768/86496606.jpg?k=af2c0e0c0e2f1dcf76e0bb7effe9bcf8ee44a02243417cc4ac6fcb61b96440ae&amp;o=&amp;hp=1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Pick_Me -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Pick_Me">
+        <rdf:type rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#TukTuk"/>
+        <hasName>Pick Me</hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#SPA_Ceylon_Ayrvedic_Treatment -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#SPA_Ceylon_Ayrvedic_Treatment">
+        <rdf:type rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#AyurvedaTreatment"/>
+        <hasCost rdf:datatype="http://www.w3.org/2001/XMLSchema#float">50.0</hasCost>
+        <hasDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.5</hasDuration>
+        <hasName>SPA Ceylon Ayrvedic Treatment</hasName>
+        <schema:image rdf:resource="https://lk.spaceylon.com/cdn/shop/files/Ceylon_Tea_-_Home_Spa_Set_-_Spa_Ceylon_Sri_Lanka-4359849.jpg?v=1728289807"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Sophia_Colombo -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Sophia_Colombo">
+        <rdf:type rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Hotel"/>
+        <locatedIn rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Colombo"/>
+        <providesTransportation rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Pick_Me"/>
+        <hasCost rdf:datatype="http://www.w3.org/2001/XMLSchema#float">100.0</hasCost>
+        <hasName>Sophia Colombo</hasName>
+        <hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.2</hasRating>
+        <schema:image rdf:resource="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1hsPTyvyVgQN86iVD5FiLlmUf5icTFmjduQ&amp;s"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#TempleOfTheToothRelic -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#TempleOfTheToothRelic">
+        <rdf:type rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#CulturalSite"/>
+        <locatedIn rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Kandy"/>
+        <hasName>Temple of the Tooth Relic</hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Trincomalee -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Trincomalee">
+        <rdf:type rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Beach"/>
+        <schema:image rdf:resource="https://www.charlotteplansatrip.com/wp-content/uploads/2020/03/Trincomalee-travel-blog-700x555.jpg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#WhaleWatching -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#WhaleWatching">
+        <rdf:type rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#NaturalSite"/>
+        <locatedIn rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#Mirissa"/>
+        <hasName>Whale Watching</hasName>
+        <schema:image rdf:resource="https://whalewatching.navy.lk/assets/template/whale/img/2.jpg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/srilanka/travel/ontology#Yaala_National_Park_Tour -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/srilanka/travel/ontology#Yaala_National_Park_Tour">
+        <rdf:type rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#WildlifeSafari"/>
+        <hasCost rdf:datatype="http://www.w3.org/2001/XMLSchema#float">6000.0</hasCost>
+        <hasName>Yaala National Park Tour</hasName>
+        <schema:image rdf:resource="https://srilankabasecamp.com/wp-content/uploads/2024/02/safari_in_sri_lanka.jpg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#preferredActivity"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/srilanka/travel/?t"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/srilanka/travel/?a"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#offersActivity"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/srilanka/travel/?d"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/srilanka/travel/?a"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#recommends"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/srilanka/travel/?t"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/srilanka/travel/?d"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#locatedIn"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/srilanka/travel/?accom"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/srilanka/travel/?d"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#recommends"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/srilanka/travel/?t"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/srilanka/travel/?d"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/srilanka/travel/ontology#recommendsAccommodation"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/srilanka/travel/?t"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/srilanka/travel/?accom"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+

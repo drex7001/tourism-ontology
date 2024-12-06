@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Welcome to the Sri Lanka Travel Explorer</h1>
+<p>Discover the best places to stay, exciting activities, cultural sites, and more, all enriched with semantic web data.</p>
+<div class="home-cards">
+    <div class="card">
+        <a href="{{ url_for('accommodations_page') }}">
+            <h2>Accommodations</h2>
+            <p>Find the best hotels, guest houses, and more.</p>
+        </a>
+    </div>
+    <div class="card">
+        <a href="{{ url_for('destinations_page') }}">
+            <h2>Destinations</h2>
+            <p>Explore beautiful beaches, hill countries, and cities.</p>
+        </a>
+    </div>
+    <div class="card">
+        <a href="{{ url_for('tourists_page') }}">
+            <h2>Tourists</h2>
+            <p>See what activities travelers recommend.</p>
+        </a>
+    </div>
+    <div class="card">
+        <a href="{{ url_for('activities_page') }}">
+            <h2>Activities</h2>
+            <p>Surfing, hiking, safaris, tea plantation tours, and more.</p>
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Sri Lanka Travel Ontology</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Welcome to Sri Lanka Travel</h1>
+    <ul>
+        <li><a href="{{ url_for('accommodations_page') }}">Accommodations</a></li>
+        <li><a href="{{ url_for('destinations_page') }}">Destinations</a></li>
+        <li><a href="{{ url_for('tourists_page') }}">Tourists</a></li>
+        <li><a href="{{ url_for('activities_page') }}">Activities</a></li>
+    </ul>
+</body>
+</html> -->

@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<!DOCTYPE rdf:RDF [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY tourism "http://example.org/srilanka-tourism#" >
+]>
+
+<rdf:RDF xmlns="http://example.org/srilanka-tourism#"
+     xml:base="http://example.org/srilanka-tourism"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:tourism="http://example.org/srilanka-tourism#">
+
+    <owl:Ontology rdf:about="http://example.org/srilanka-tourism">
+        <rdfs:comment>Ontology for Sri Lanka Tourism - Destinations, Attractions, Accommodations, etc.</rdfs:comment>
+        <rdfs:label>Sri Lanka Tourism Ontology</rdfs:label>
+    </owl:Ontology>
+
+    <!-- Classes -->
+    <owl:Class rdf:about="&tourism;Destination"/>
+    <owl:Class rdf:about="&tourism;Attraction"/>
+    <owl:Class rdf:about="&tourism;Accommodation"/>
+    <owl:Class rdf:about="&tourism;Transportation"/>
+    <owl:Class rdf:about="&tourism;CulturalExperience"/>
+    <owl:Class rdf:about="&tourism;NaturalLandscape"/>
+    
+    <!-- Example subclasses -->
+    <owl:Class rdf:about="&tourism;City">
+        <rdfs:subClassOf rdf:resource="&tourism;Destination"/>
+    </owl:Class>
+    <owl:Class rdf:about="&tourism;HistoricalSite">
+        <rdfs:subClassOf rdf:resource="&tourism;Attraction"/>
+    </owl:Class>
+    <owl:Class rdf:about="&tourism;ReligiousPlace">
+        <rdfs:subClassOf rdf:resource="&tourism;Attraction"/>
+    </owl:Class>
+    <owl:Class rdf:about="&tourism;NationalPark">
+        <rdfs:subClassOf rdf:resource="&tourism;Attraction"/>
+    </owl:Class>
+    <owl:Class rdf:about="&tourism;Hotel">
+        <rdfs:subClassOf rdf:resource="&tourism;Accommodation"/>
+    </owl:Class>
+
+    <!-- Object Properties -->
+    <owl:ObjectProperty rdf:about="&tourism;isLocatedIn">
+        <rdfs:domain rdf:resource="&tourism;Attraction"/>
+        <rdfs:range rdf:resource="&tourism;Destination"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="&tourism;hasAttraction">
+        <rdfs:domain rdf:resource="&tourism;Destination"/>
+        <rdfs:range rdf:resource="&tourism;Attraction"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="&tourism;hasAccommodation">
+        <rdfs:domain rdf:resource="&tourism;Destination"/>
+        <rdfs:range rdf:resource="&tourism;Accommodation"/>
+    </owl:ObjectProperty>
+
+    <!-- Data Properties -->
+    <owl:DatatypeProperty rdf:about="&tourism;hasName">
+        <rdfs:domain rdf:resource="&tourism;Destination"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="&tourism;hasDescription">
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="&tourism;hasLatitude">
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="&tourism;hasLongitude">
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="&tourism;hasRating">
+        <rdfs:domain rdf:resource="&tourism;Attraction"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="&tourism;hasPopularityIndex">
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:DatatypeProperty>
+
+    <!-- Individuals (Destinations) -->
+    <tourism:City rdf:about="&tourism;Kandy">
+        <tourism:hasName>Kandy</tourism:hasName>
+        <tourism:hasDescription>Historic city in central Sri Lanka, known for its cultural heritage.</tourism:hasDescription>
+        <tourism:hasLatitude>7.2906</tourism:hasLatitude>
+        <tourism:hasLongitude>80.6337</tourism:hasLongitude>
+    </tourism:City>
+
+    <tourism:City rdf:about="&tourism;Colombo">
+        <tourism:hasName>Colombo</tourism:hasName>
+        <tourism:hasDescription>Commercial capital of Sri Lanka, coastal city with colonial architecture.</tourism:hasDescription>
+        <tourism:hasLatitude>6.9271</tourism:hasLatitude>
+        <tourism:hasLongitude>79.8612</tourism:hasLongitude>
+    </tourism:City>
+
+    <!-- Individuals (Attractions) -->
+    <tourism:ReligiousPlace rdf:about="&tourism;TempleOfTheTooth">
+        <tourism:hasDescription>The Temple of the Sacred Tooth Relic</tourism:hasDescription>
+        <tourism:hasRating>4.8</tourism:hasRating>
+        <tourism:isLocatedIn rdf:resource="&tourism;Kandy"/>
+    </tourism:ReligiousPlace>
+
+    <tourism:NationalPark rdf:about="&tourism;YalaNationalPark">
+        <tourism:hasDescription>Famous national park known for its wildlife, especially leopards.</tourism:hasDescription>
+        <tourism:hasRating>4.7</tourism:hasRating>
+        <tourism:isLocatedIn rdf:resource="&tourism;Colombo"/>
+    </tourism:NationalPark>
+
+    <!-- Individuals (Accommodations) -->
+    <tourism:Hotel rdf:about="&tourism;CinnamonGrandHotel">
+        <tourism:hasDescription>Luxury hotel in Colombo city center.</tourism:hasDescription>
+    </tourism:Hotel>
+
+    <!-- Link Destinations to their Attractions and Accommodations -->
+    <rdf:Description rdf:about="&tourism;Kandy">
+        <tourism:hasAttraction rdf:resource="&tourism;TempleOfTheTooth"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="&tourism;Colombo">
+        <tourism:hasAttraction rdf:resource="&tourism;YalaNationalPark"/>
+        <tourism:hasAccommodation rdf:resource="&tourism;CinnamonGrandHotel"/>
+    </rdf:Description>
+
+</rdf:RDF>

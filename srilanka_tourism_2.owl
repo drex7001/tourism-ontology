@@ -1,0 +1,390 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/srilanka/travel/ontology#"
+     xml:base="http://www.semanticweb.org/srilanka/travel/ontology"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/srilanka/travel/ontology"/>
+    
+    <!-- Classes -->
+    
+    <owl:Class rdf:about="#Accommodation"/>
+    <owl:Class rdf:about="#Activity"/>
+    <owl:Class rdf:about="#Attraction"/>
+    <owl:Class rdf:about="#Destination"/>
+    <owl:Class rdf:about="#Tourist"/>
+    <owl:Class rdf:about="#Transportation"/>
+    
+    <!-- Subclasses -->
+    
+    <owl:Class rdf:about="#City">
+        <rdfs:subClassOf rdf:resource="#Destination"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="#Beach">
+        <rdfs:subClassOf rdf:resource="#Destination"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="#HillCountry">
+        <rdfs:subClassOf rdf:resource="#Destination"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="#CulturalSite">
+        <rdfs:subClassOf rdf:resource="#Attraction"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="#NaturalSite">
+        <rdfs:subClassOf rdf:resource="#Attraction"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="#Hotel">
+        <rdfs:subClassOf rdf:resource="#Accommodation"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="#GuestHouse">
+        <rdfs:subClassOf rdf:resource="#Accommodation"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="#Bus">
+        <rdfs:subClassOf rdf:resource="#Transportation"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="#Train">
+        <rdfs:subClassOf rdf:resource="#Transportation"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="#TukTuk">
+        <rdfs:subClassOf rdf:resource="#Transportation"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="#Surfing">
+        <rdfs:subClassOf rdf:resource="#Activity"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="#Hiking">
+        <rdfs:subClassOf rdf:resource="#Activity"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="#WildlifeSafari">
+        <rdfs:subClassOf rdf:resource="#Activity"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="#AyurvedaTreatment">
+        <rdfs:subClassOf rdf:resource="#Activity"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="#TeaPlantationTour">
+        <rdfs:subClassOf rdf:resource="#Activity"/>
+    </owl:Class>
+    
+    <!-- Object Properties -->
+    
+    <owl:ObjectProperty rdf:about="#hasAttraction">
+        <rdfs:domain rdf:resource="#Destination"/>
+        <rdfs:range rdf:resource="#Attraction"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="#offersActivity">
+        <rdfs:domain rdf:resource="#Destination"/>
+        <rdfs:range rdf:resource="#Activity"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="#preferredActivity">
+        <rdfs:domain rdf:resource="#Tourist"/>
+        <rdfs:range rdf:resource="#Activity"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="#locatedIn">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Attraction"/>
+                    <rdf:Description rdf:about="#Accommodation"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="#Destination"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="#providesTransportation">
+        <rdfs:domain rdf:resource="#Accommodation"/>
+        <rdfs:range rdf:resource="#Transportation"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="#recommends">
+        <rdfs:domain rdf:resource="#Tourist"/>
+        <rdfs:range rdf:resource="#Destination"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="#recommendsAccommodation">
+        <rdfs:domain rdf:resource="#Tourist"/>
+        <rdfs:range rdf:resource="#Accommodation"/>
+    </owl:ObjectProperty>
+    
+    <!-- Data Properties -->
+    
+    <owl:DatatypeProperty rdf:about="#hasName">
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="#hasRating">
+        <rdfs:domain rdf:resource="#Accommodation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="#hasCost">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Accommodation"/>
+                    <rdf:Description rdf:about="#Activity"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="#hasDuration">
+        <rdfs:domain rdf:resource="#Activity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+    <!-- Individuals -->
+    
+    <!-- Destinations -->
+    
+    <owl:NamedIndividual rdf:about="#Colombo">
+        <rdf:type rdf:resource="#City"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Colombo</hasName>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="#Kandy">
+        <rdf:type rdf:resource="#City"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kandy</hasName>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="#Ella">
+        <rdf:type rdf:resource="#HillCountry"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ella</hasName>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="#Mirissa">
+        <rdf:type rdf:resource="#Beach"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mirissa</hasName>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="#NuwaraEliya">
+        <rdf:type rdf:resource="#HillCountry"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nuwara Eliya</hasName>
+    </owl:NamedIndividual>
+    
+    <!-- Attractions -->
+    
+    <owl:NamedIndividual rdf:about="#TempleOfTheToothRelic">
+        <rdf:type rdf:resource="#CulturalSite"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Temple of the Tooth Relic</hasName>
+        <locatedIn rdf:resource="#Kandy"/>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="#NineArchesBridge">
+        <rdf:type rdf:resource="#NaturalSite"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nine Arches Bridge</hasName>
+        <locatedIn rdf:resource="#Ella"/>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="#HortonPlains">
+        <rdf:type rdf:resource="#NaturalSite"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Horton Plains</hasName>
+        <locatedIn rdf:resource="#NuwaraEliya"/>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="#WhaleWatching">
+        <rdf:type rdf:resource="#NaturalSite"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Whale Watching</hasName>
+        <locatedIn rdf:resource="#Mirissa"/>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="#GalleFaceGreen">
+        <rdf:type rdf:resource="#CulturalSite"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Galle Face Green</hasName>
+        <locatedIn rdf:resource="#Colombo"/>
+    </owl:NamedIndividual>
+    
+    <!-- Activities -->
+    
+    <owl:NamedIndividual rdf:about="#SurfingActivity">
+        <rdf:type rdf:resource="#Surfing"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Surfing Activity</hasName>
+        <hasCost rdf:datatype="http://www.w3.org/2001/XMLSchema#float">30.0</hasCost>
+        <hasDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2.0</hasDuration>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="#HikingActivity">
+        <rdf:type rdf:resource="#Hiking"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hiking Activity</hasName>
+        <hasCost rdf:datatype="http://www.w3.org/2001/XMLSchema#float">15.0</hasCost>
+        <hasDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.0</hasDuration>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="#TeaPlantationTourActivity">
+        <rdf:type rdf:resource="#TeaPlantationTour"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tea Plantation Tour Activity</hasName>
+        <hasCost rdf:datatype="http://www.w3.org/2001/XMLSchema#float">10.0</hasCost>
+        <hasDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#float">3.0</hasDuration>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="#AyurvedaTreatmentActivity">
+        <rdf:type rdf:resource="#AyurvedaTreatment"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ayurveda Treatment Activity</hasName>
+        <hasCost rdf:datatype="http://www.w3.org/2001/XMLSchema#float">50.0</hasCost>
+        <hasDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.5</hasDuration>
+    </owl:NamedIndividual>
+    
+    <!-- Accommodations -->
+    
+    <owl:NamedIndividual rdf:about="#ColomboCityHotel">
+        <rdf:type rdf:resource="#Hotel"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Colombo City Hotel</hasName>
+        <locatedIn rdf:resource="#Colombo"/>
+        <hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.2</hasRating>
+        <hasCost rdf:datatype="http://www.w3.org/2001/XMLSchema#float">100.0</hasCost>
+        <providesTransportation rdf:resource="#TukTukService"/>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="#EllaMountainGuestHouse">
+        <rdf:type rdf:resource="#GuestHouse"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ella Mountain Guest House</hasName>
+        <locatedIn rdf:resource="#Ella"/>
+        <hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.0</hasRating>
+        <hasCost rdf:datatype="http://www.w3.org/2001/XMLSchema#float">50.0</hasCost>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="#NuwaraEliyaTeaBungalow">
+        <rdf:type rdf:resource="#Hotel"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nuwara Eliya Tea Bungalow</hasName>
+        <locatedIn rdf:resource="#NuwaraEliya"/>
+        <hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.8</hasRating>
+        <hasCost rdf:datatype="http://www.w3.org/2001/XMLSchema#float">120.0</hasCost>
+    </owl:NamedIndividual>
+    
+    <!-- Transportation -->
+    
+    <owl:NamedIndividual rdf:about="#TukTukService">
+        <rdf:type rdf:resource="#TukTuk"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tuk Tuk Service</hasName>
+    </owl:NamedIndividual>
+    
+    <!-- Tourists -->
+    
+    <owl:NamedIndividual rdf:about="#Amara">
+        <rdf:type rdf:resource="#Tourist"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Amara</hasName>
+        <preferredActivity rdf:resource="#HikingActivity"/>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="#Nimal">
+        <rdf:type rdf:resource="#Tourist"/>
+        <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nimal</hasName>
+        <preferredActivity rdf:resource="#AyurvedaTreatmentActivity"/>
+    </owl:NamedIndividual>
+    
+    <!-- Relationships Between Destinations and Activities -->
+    
+    <owl:NamedIndividual rdf:about="#Ella">
+        <offersActivity rdf:resource="#HikingActivity"/>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="#Colombo">
+        <offersActivity rdf:resource="#AyurvedaTreatmentActivity"/>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="#Mirissa">
+        <offersActivity rdf:resource="#SurfingActivity"/>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="#NuwaraEliya">
+        <offersActivity rdf:resource="#TeaPlantationTourActivity"/>
+    </owl:NamedIndividual>
+    
+    <!-- Relationships Between Destinations and Attractions -->
+    
+    <owl:NamedIndividual rdf:about="#Kandy">
+        <hasAttraction rdf:resource="#TempleOfTheToothRelic"/>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="#Ella">
+        <hasAttraction rdf:resource="#NineArchesBridge"/>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="#NuwaraEliya">
+        <hasAttraction rdf:resource="#HortonPlains"/>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="#Colombo">
+        <hasAttraction rdf:resource="#GalleFaceGreen"/>
+    </owl:NamedIndividual>
+    
+    <!-- SWRL Rules -->
+    
+    <!-- Rule 1: If a Tourist prefers an Activity, and a Destination offers that Activity, then the Destination is recommended to the Tourist -->
+    
+    <rdf:Description rdf:about="#RecommendDestinationRule">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body rdf:parseType="Collection">
+            <!-- Tourist ?t has preferredActivity ?a -->
+            <swrl:IndividualPropertyAtom>
+                <swrl:propertyPredicate rdf:resource="#preferredActivity"/>
+                <swrl:argument1 rdf:resource="?t"/>
+                <swrl:argument2 rdf:resource="?a"/>
+            </swrl:IndividualPropertyAtom>
+            <!-- Destination ?d offersActivity ?a -->
+            <swrl:IndividualPropertyAtom>
+                <swrl:propertyPredicate rdf:resource="#offersActivity"/>
+                <swrl:argument1 rdf:resource="?d"/>
+                <swrl:argument2 rdf:resource="?a"/>
+            </swrl:IndividualPropertyAtom>
+        </swrl:body>
+        <swrl:head rdf:parseType="Collection">
+            <!-- Tourist ?t recommends ?d -->
+            <swrl:IndividualPropertyAtom>
+                <swrl:propertyPredicate rdf:resource="#recommends"/>
+                <swrl:argument1 rdf:resource="?t"/>
+                <swrl:argument2 rdf:resource="?d"/>
+            </swrl:IndividualPropertyAtom>
+        </swrl:head>
+    </rdf:Description>
+    
+    <!-- Rule 2: If an Accommodation is located in a Destination that is recommended to a Tourist, then recommend the Accommodation to the Tourist -->
+    
+    <rdf:Description rdf:about="#RecommendAccommodationRule">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body rdf:parseType="Collection">
+            <!-- Accommodation ?a locatedIn ?d -->
+            <swrl:IndividualPropertyAtom>
+                <swrl:propertyPredicate rdf:resource="#locatedIn"/>
+                <swrl:argument1 rdf:resource="?accom"/>
+                <swrl:argument2 rdf:resource="?d"/>
+            </swrl:IndividualPropertyAtom>
+            <!-- Tourist ?t recommends ?d -->
+            <swrl:IndividualPropertyAtom>
+                <swrl:propertyPredicate rdf:resource="#recommends"/>
+                <swrl:argument1 rdf:resource="?t"/>
+                <swrl:argument2 rdf:resource="?d"/>
+            </swrl:IndividualPropertyAtom>
+        </swrl:body>
+        <swrl:head rdf:parseType="Collection">
+            <!-- Tourist ?t recommendsAccommodation ?a -->
+            <swrl:IndividualPropertyAtom>
+                <swrl:propertyPredicate rdf:resource="#recommendsAccommodation"/>
+                <swrl:argument1 rdf:resource="?t"/>
+                <swrl:argument2 rdf:resource="?accom"/>
+            </swrl:IndividualPropertyAtom>
+        </swrl:head>
+    </rdf:Description>
+    
+</rdf:RDF>

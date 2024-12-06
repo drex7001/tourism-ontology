@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Destinations</h1>
+<div id="destinationsContainer" class="card-grid"></div>
+
+<script>
+    fetch('/destinations.json')
+        .then(resp => resp.json())
+        .then(data => {
+            const container = document.getElementById('destinationsContainer');
+            container.innerHTML = '';
+            data.forEach(dest => {
+                const card = document.createElement('div');
+                card.classList.add('card');
+
+                if(dest.image) {
+                    const img = document.createElement('img');
+                    img.src = dest.image;
+                    img.alt = dest.name;
+                    img.classList.add('card-image');
+                    card.appendChild(img);
+                }
+
+                const title = document.createElement('h2');
+                title.textContent = dest.name || 'Unknown Destination';
+                card.appendChild(title);
+
+                if(dest.attractions.length > 0) {
+                    const attrTitle = document.createElement('h3');
+                    attrTitle.textContent = 'Attractions:';
+                    card.appendChild(attrTitle);
+
+                    const attrList = document.createElement('ul');
+                    dest.attractions.forEach(attr => {
+                        const li = document.createElement('li');
+                        if(attr.image) {
+                            const attrImg = document.createElement('img');
+                            attrImg.src = attr.image;
+                            attrImg.alt = attr.name;
+                            attrImg.classList.add('small-image');
+                            li.appendChild(attrImg);
+                        }
+                        li.appendChild(document.createTextNode(attr.name));
+                        attrList.appendChild(li);
+                    });
+                    card.appendChild(attrList);
+                }
+
+                container.appendChild(card);
+            });
+        });
+</script>
+{% endblock %}
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Destinations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Destinations</h1>
+    <div id="destinationsContainer"></div>
+
+    <script>
+        fetch('/destinations.json')
+            .then(resp => resp.json())
+            .then(data => {
+                const container = document.getElementById('destinationsContainer');
+                data.forEach(dest => {
+                    const section = document.createElement('div');
+                    section.classList.add('destination');
+
+                    const title = document.createElement('h2');
+                    title.textContent = dest.name;
+
+                    if(dest.image) {
+                        const img = document.createElement('img');
+                        img.src = dest.image;
+                        img.alt = dest.name;
+                        section.appendChild(img);
+                    }
+
+                    section.appendChild(title);
+
+                    if(dest.attractions.length > 0) {
+                        const attrList = document.createElement('ul');
+                        dest.attractions.forEach(attr => {
+                            const li = document.createElement('li');
+                            if(attr.image) {
+                                const attrImg = document.createElement('img');
+                                attrImg.src = attr.image;
+                                attrImg.alt = attr.name;
+                                attrImg.style.width = "100px";
+                                li.appendChild(attrImg);
+                            }
+                            li.appendChild(document.createTextNode(attr.name));
+                            attrList.appendChild(li);
+                        });
+                        section.appendChild(attrList);
+                    }
+
+                    container.appendChild(section);
+                });
+            });
+    </script>
+</body>
+</html> -->

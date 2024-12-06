@@ -1,0 +1,300 @@
+@prefix : <http://www.semanticweb.org/srilanka/travel/ontology#> .
+@prefix ont: <http://www.semanticweb.org/srilanka/travel/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.semanticweb.org/srilanka/travel/ontology#> rdf:type owl:Ontology .
+
+### Classes ###
+ont:Destination rdf:type owl:Class .
+ont:City rdf:type owl:Class ;
+    rdfs:subClassOf ont:Destination .
+ont:Beach rdf:type owl:Class ;
+    rdfs:subClassOf ont:Destination .
+ont:HillCountry rdf:type owl:Class ;
+    rdfs:subClassOf ont:Destination .
+
+ont:Attraction rdf:type owl:Class .
+ont:CulturalSite rdf:type owl:Class ;
+    rdfs:subClassOf ont:Attraction .
+ont:NaturalSite rdf:type owl:Class ;
+    rdfs:subClassOf ont:Attraction .
+
+ont:Accommodation rdf:type owl:Class .
+ont:Hotel rdf:type owl:Class ;
+    rdfs:subClassOf ont:Accommodation .
+ont:GuestHouse rdf:type owl:Class ;
+    rdfs:subClassOf ont:Accommodation .
+
+ont:Transportation rdf:type owl:Class .
+ont:Bus rdf:type owl:Class ;
+    rdfs:subClassOf ont:Transportation .
+ont:Train rdf:type owl:Class ;
+    rdfs:subClassOf ont:Transportation .
+ont:TukTuk rdf:type owl:Class ;
+    rdfs:subClassOf ont:Transportation .
+
+ont:Activity rdf:type owl:Class .
+ont:Surfing rdf:type owl:Class ;
+    rdfs:subClassOf ont:Activity .
+ont:Hiking rdf:type owl:Class ;
+    rdfs:subClassOf ont:Activity .
+ont:WildlifeSafari rdf:type owl:Class ;
+    rdfs:subClassOf ont:Activity .
+ont:AyurvedaTreatment rdf:type owl:Class ;
+    rdfs:subClassOf ont:Activity .
+ont:TeaPlantationTour rdf:type owl:Class ;
+    rdfs:subClassOf ont:Activity .
+
+ont:Tourist rdf:type owl:Class .
+
+### Object Properties ###
+ont:hasAttraction rdf:type owl:ObjectProperty ;
+    rdfs:domain ont:Destination ;
+    rdfs:range ont:Attraction .
+
+ont:offersActivity rdf:type owl:ObjectProperty ;
+    rdfs:domain ont:Destination ;
+    rdfs:range ont:Activity .
+
+ont:preferredActivity rdf:type owl:ObjectProperty ;
+    rdfs:domain ont:Tourist ;
+    rdfs:range ont:Activity .
+
+ont:locatedIn rdf:type owl:ObjectProperty ;
+    rdfs:domain [
+        rdf:type owl:Class ;
+        owl:unionOf ( ont:Attraction ont:Accommodation )
+    ] ;
+    rdfs:range ont:Destination .
+
+ont:providesTransportation rdf:type owl:ObjectProperty ;
+    rdfs:domain ont:Accommodation ;
+    rdfs:range ont:Transportation .
+
+ont:recommends rdf:type owl:ObjectProperty ;
+    rdfs:domain ont:Tourist ;
+    rdfs:range ont:Destination .
+
+ont:recommendsAccommodation rdf:type owl:ObjectProperty ;
+    rdfs:domain ont:Tourist ;
+    rdfs:range ont:Accommodation .
+
+### Data Properties ###
+ont:hasName rdf:type owl:DatatypeProperty ;
+    rdfs:domain owl:Thing ;
+    rdfs:range xsd:string .
+
+ont:hasRating rdf:type owl:DatatypeProperty ;
+    rdfs:domain ont:Accommodation ;
+    rdfs:range xsd:float .
+
+ont:hasCost rdf:type owl:DatatypeProperty ;
+    rdfs:domain [
+        rdf:type owl:Class ;
+        owl:unionOf ( ont:Accommodation ont:Activity )
+    ] ;
+    rdfs:range xsd:float .
+
+ont:hasDuration rdf:type owl:DatatypeProperty ;
+    rdfs:domain ont:Activity ;
+    rdfs:range xsd:float .
+
+### Individuals ###
+
+#### Destinations ####
+ont:Colombo rdf:type ont:City ;
+    ont:hasName "Colombo" .
+
+ont:Kandy rdf:type ont:City ;
+    ont:hasName "Kandy" .
+
+ont:Ella rdf:type ont:HillCountry ;
+    ont:hasName "Ella" .
+
+ont:Mirissa rdf:type ont:Beach ;
+    ont:hasName "Mirissa" .
+
+ont:NuwaraEliya rdf:type ont:HillCountry ;
+    ont:hasName "Nuwara Eliya" .
+
+#### Attractions ####
+ont:TempleOfTheToothRelic rdf:type ont:CulturalSite ;
+    ont:hasName "Temple of the Tooth Relic" ;
+    ont:locatedIn ont:Kandy .
+
+ont:NineArchesBridge rdf:type ont:NaturalSite ;
+    ont:hasName "Nine Arches Bridge" ;
+    ont:locatedIn ont:Ella .
+
+ont:HortonPlains rdf:type ont:NaturalSite ;
+    ont:hasName "Horton Plains" ;
+    ont:locatedIn ont:NuwaraEliya .
+
+ont:WhaleWatching rdf:type ont:NaturalSite ;
+    ont:hasName "Whale Watching" ;
+    ont:locatedIn ont:Mirissa .
+
+ont:GalleFaceGreen rdf:type ont:CulturalSite ;
+    ont:hasName "Galle Face Green" ;
+    ont:locatedIn ont:Colombo .
+
+#### Activities ####
+ont:SurfingActivity rdf:type ont:Surfing ;
+    ont:hasName "Surfing Activity" ;
+    ont:hasCost 30.0 ;
+    ont:hasDuration 2.0 .
+
+ont:HikingActivity rdf:type ont:Hiking ;
+    ont:hasName "Hiking Activity" ;
+    ont:hasCost 15.0 ;
+    ont:hasDuration 4.0 .
+
+ont:TeaPlantationTourActivity rdf:type ont:TeaPlantationTour ;
+    ont:hasName "Tea Plantation Tour Activity" ;
+    ont:hasCost 10.0 ;
+    ont:hasDuration 3.0 .
+
+ont:AyurvedaTreatmentActivity rdf:type ont:AyurvedaTreatment ;
+    ont:hasName "Ayurveda Treatment Activity" ;
+    ont:hasCost 50.0 ;
+    ont:hasDuration 1.5 .
+
+#### Accommodations ####
+ont:ColomboCityHotel rdf:type ont:Hotel ;
+    ont:hasName "Colombo City Hotel" ;
+    ont:locatedIn ont:Colombo ;
+    ont:hasRating 4.2 ;
+    ont:hasCost 100.0 ;
+    ont:providesTransportation ont:TukTukService .
+
+ont:EllaMountainGuestHouse rdf:type ont:GuestHouse ;
+    ont:hasName "Ella Mountain Guest House" ;
+    ont:locatedIn ont:Ella ;
+    ont:hasRating 4.0 ;
+    ont:hasCost 50.0 .
+
+ont:NuwaraEliyaTeaBungalow rdf:type ont:Hotel ;
+    ont:hasName "Nuwara Eliya Tea Bungalow" ;
+    ont:locatedIn ont:NuwaraEliya ;
+    ont:hasRating 4.8 ;
+    ont:hasCost 120.0 .
+
+#### Transportation Instances ####
+ont:TukTukService rdf:type ont:TukTuk ;
+    ont:hasName "Tuk Tuk Service" .
+
+#### Tourists ####
+ont:Amara rdf:type ont:Tourist ;
+    ont:hasName "Amara" ;
+    ont:preferredActivity ont:HikingActivity .
+
+ont:Nimal rdf:type ont:Tourist ;
+    ont:hasName "Nimal" ;
+    ont:preferredActivity ont:AyurvedaTreatmentActivity .
+
+### Relationships Between Destinations and Activities ###
+ont:Ella ont:offersActivity ont:HikingActivity .
+ont:Colombo ont:offersActivity ont:AyurvedaTreatmentActivity .
+ont:Mirissa ont:offersActivity ont:SurfingActivity .
+ont:NuwaraEliya ont:offersActivity ont:TeaPlantationTourActivity .
+
+### Relationships Between Destinations and Attractions ###
+ont:Kandy ont:hasAttraction ont:TempleOfTheToothRelic .
+ont:Ella ont:hasAttraction ont:NineArchesBridge .
+ont:NuwaraEliya ont:hasAttraction ont:HortonPlains .
+ont:Colombo ont:hasAttraction ont:GalleFaceGreen .
+
+### SWRL Rules ###
+
+#### Rule 1: Recommend Destination Based on Preferred Activity ####
+
+ont:Rule1 rdf:type swrl:Imp ;
+    swrl:body (
+        [ rdf:type swrl:IndividualPropertyAtom ;
+          swrl:argument1 ont:Amara ;
+          swrl:propertyPredicate ont:preferredActivity ;
+          swrl:argument2 ?activity
+        ]
+        [ rdf:type swrl:IndividualPropertyAtom ;
+          swrl:argument1 ?destination ;
+          swrl:propertyPredicate ont:offersActivity ;
+          swrl:argument2 ?activity
+        ]
+    ) ;
+    swrl:head (
+        [ rdf:type swrl:IndividualPropertyAtom ;
+          swrl:argument1 ont:Amara ;
+          swrl:propertyPredicate ont:recommends ;
+          swrl:argument2 ?destination
+        ]
+    ) .
+
+ont:Rule1a rdf:type swrl:Imp ;
+    swrl:body (
+        [ rdf:type swrl:IndividualPropertyAtom ;
+          swrl:argument1 ont:Nimal ;
+          swrl:propertyPredicate ont:preferredActivity ;
+          swrl:argument2 ?activity
+        ]
+        [ rdf:type swrl:IndividualPropertyAtom ;
+          swrl:argument1 ?destination ;
+          swrl:propertyPredicate ont:offersActivity ;
+          swrl:argument2 ?activity
+        ]
+    ) ;
+    swrl:head (
+        [ rdf:type swrl:IndividualPropertyAtom ;
+          swrl:argument1 ont:Nimal ;
+          swrl:propertyPredicate ont:recommends ;
+          swrl:argument2 ?destination
+        ]
+    ) .
+
+#### Rule 2: Recommend Accommodation Based on Recommended Destination ####
+
+ont:Rule2 rdf:type swrl:Imp ;
+    swrl:body (
+        [ rdf:type swrl:IndividualPropertyAtom ;
+          swrl:argument1 ?accommodation ;
+          swrl:propertyPredicate ont:locatedIn ;
+          swrl:argument2 ?destination
+        ]
+        [ rdf:type swrl:IndividualPropertyAtom ;
+          swrl:argument1 ont:Amara ;
+          swrl:propertyPredicate ont:recommends ;
+          swrl:argument2 ?destination
+        ]
+    ) ;
+    swrl:head (
+        [ rdf:type swrl:IndividualPropertyAtom ;
+          swrl:argument1 ont:Amara ;
+          swrl:propertyPredicate ont:recommendsAccommodation ;
+          swrl:argument2 ?accommodation
+        ]
+    ) .
+
+ont:Rule2a rdf:type swrl:Imp ;
+    swrl:body (
+        [ rdf:type swrl:IndividualPropertyAtom ;
+          swrl:argument1 ?accommodation ;
+          swrl:propertyPredicate ont:locatedIn ;
+          swrl:argument2 ?destination
+        ]
+        [ rdf:type swrl:IndividualPropertyAtom ;
+          swrl:argument1 ont:Nimal ;
+          swrl:propertyPredicate ont:recommends ;
+          swrl:argument2 ?destination
+        ]
+    ) ;
+    swrl:head (
+        [ rdf:type swrl:IndividualPropertyAtom ;
+          swrl:argument1 ont:Nimal ;
+          swrl:propertyPredicate ont:recommendsAccommodation ;
+          swrl:argument2 ?accommodation
+        ]
+    ) .
