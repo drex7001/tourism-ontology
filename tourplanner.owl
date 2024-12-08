@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:ns1="http://example.org/tourplanner#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="http://example.org/tourplanner#HeritageTour">
+    <rdf:type rdf:resource="http://example.org/tourplanner#TourPackage"/>
+    <ns1:packageName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Heritage Tour</ns1:packageName>
+    <ns1:price rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">25000.0</ns1:price>
+    <ns1:duration rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</ns1:duration>
+    <ns1:includesPlace rdf:resource="http://example.org/tourplanner#SriLankaBeach"/>
+    <ns1:includesPlace rdf:resource="http://example.org/tourplanner#SigiriyaRock"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/tourplanner#activityName">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/tourplanner#Activity"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/tourplanner#includesPlace">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/tourplanner#TourPackage"/>
+    <rdfs:range rdf:resource="http://example.org/tourplanner#Place"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/tourplanner#SriLankaBeach">
+    <rdf:type rdf:resource="http://example.org/tourplanner#Place"/>
+    <ns1:placeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Unawatuna Beach</ns1:placeName>
+    <ns1:location rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Southern Province</ns1:location>
+    <ns1:category rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Beach</ns1:category>
+    <ns1:hasActivity rdf:resource="http://example.org/tourplanner#Snorkeling"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/tourplanner#location">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/tourplanner#Place"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/tourplanner#packageName">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/tourplanner#TourPackage"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/tourplanner#placeName">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/tourplanner#Place"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/tourplanner#Activity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/tourplanner#hasActivity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/tourplanner#Place"/>
+    <rdfs:range rdf:resource="http://example.org/tourplanner#Activity"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/tourplanner#duration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/tourplanner#TourPackage"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/tourplanner#SigiriyaRock">
+    <rdf:type rdf:resource="http://example.org/tourplanner#Place"/>
+    <ns1:placeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sigiriya Rock</ns1:placeName>
+    <ns1:location rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Central Province</ns1:location>
+    <ns1:category rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Historical</ns1:category>
+    <ns1:hasActivity rdf:resource="http://example.org/tourplanner#RockClimbing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/tourplanner#Snorkeling">
+    <rdf:type rdf:resource="http://example.org/tourplanner#Activity"/>
+    <ns1:activityName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Snorkeling</ns1:activityName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/tourplanner#RockClimbing">
+    <rdf:type rdf:resource="http://example.org/tourplanner#Activity"/>
+    <ns1:activityName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rock Climbing</ns1:activityName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/tourplanner#Place">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/tourplanner#price">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/tourplanner#TourPackage"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/tourplanner#category">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/tourplanner#Place"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/tourplanner#TourPackage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+</rdf:RDF>
